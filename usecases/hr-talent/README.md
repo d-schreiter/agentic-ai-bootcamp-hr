@@ -1,6 +1,6 @@
 # 🧑‍💼 Agentic HR Management
 `Chat with documents` `RAG` `Flows` `Intelligent Document Processing` `Multi-agent orchestration`
-<img width="993" alt="Screenshot 2025-09-24 at 3 57 57 PM" src="https://github.ibm.com/skol/agentic-ai-client-bootcamp/assets/12043/c86976cc-cb38-483a-b8c8-d48f24a70bf1">
+<img width="993" alt="Screenshot 2025-09-24 at 3 57 57 PM" src="assets/47a3ef11-20ce-4e15-82a2-13ca81ef4362.png">
 
 
 ## 🤔 The Problem
@@ -35,15 +35,12 @@ Luisa and her team would be able to save hundreds of hours spent scanning résum
 
 ## 🏛️ The solution
 
-<img width="1719" alt="Screenshot 2025-09-22 at 9 16 06 PM" src="https://github.ibm.com/skol/agentic-ai-client-bootcamp/assets/12043/9556f3ed-e49b-4355-b901-23f84ac85442">
+<img width="1719" alt="Screenshot 2025-09-22 at 9 16 06 PM" src="assets/9556f3ed-e49b-4355-b901-23f84ac85442.png">
 
 ## 🏗️ Architecture
  
-<img width="1719" alt="HR Talent Architecture Diagram" src="https://github.ibm.com/skol/agentic-ai-client-bootcamp/blob/HR-Talent-Arc/usecases/hr-talent/assets/hands-on-lab-assets/HR%20Talent%20Arch.png">
+<img width="1719" alt="HR Talent Architecture Diagram" src="assets/HR Talent Arch.png">
 
-## 🎥 Demo
-
-Coming soon
 
 
 ## 📄 Hands-on step-by-step lab
