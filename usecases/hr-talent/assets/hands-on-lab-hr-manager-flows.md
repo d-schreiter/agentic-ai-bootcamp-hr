@@ -82,13 +82,7 @@ After clicking **Create**, you will be taken to this screen:
 
 ![alt text](./hands-on-lab-assets/talent_agent_intro.png)
 
-For this agent, we will use the **llama-3-405b-instruct** model. You can select it in the **Model** drop-down:
-
-![alt text](./hands-on-lab-assets/agent_change_model.png)
-
-Feel free to experiment with the other (vision) model too, but this one worked better for our use case.
-
-We will leave all the other settings at default values for now.  Scroll down to the **Toolset** section. This is where we will be adding our flow (agentic workflow).  Click on **Add Tool**:
+We will leave all the settings at default values for now.  Scroll down to the **Toolset** section. This is where we will be adding our flow (agentic workflow).  Click on **Add Tool**:
 
 ![alt text](./hands-on-lab-assets/add_tool.png)
 
@@ -145,18 +139,20 @@ and select **Integer**:
 
 ![alt text](./hands-on-lab-assets/integer_var.png)
 
-Enter the name of the variable, *num_candidates* and a description e.g: 
+Enter the name of the variable, **num_candidates** and a description e.g:
 
 ```
 list of candidates, enum
 ```
 Check the **List of Integer** option since we will have a list, and click on **Add** to add the variable.
 
-Add another variable: 
+> **Important:** Make sure to name this variable exactly **num_candidates** (as a list of integers) as it will be referenced later in the For each loop.
+
+Add another variable:
 
 ![alt text](./hands-on-lab-assets/add_another_var.png)
 
-This time make it a String.  Give it the name *candidates* and a simple description e.g.: 
+This time make it a String.  Give it the name **candidates** and a simple description e.g.:
 
 ```
 candidate names and skills
@@ -166,7 +162,9 @@ Specify the default (starting) value: "" and click **Add**:
 
 ![alt text](./hands-on-lab-assets/candidates_var.png)
 
-Your flow show now look like this: 
+> **Important:** Make sure to name this variable exactly **candidates** (as a string) as it will be used to store candidate information throughout the flow.
+
+Your flow show now look like this:
 
 ![alt text](./hands-on-lab-assets/start_vars_defined.png)
 
@@ -229,11 +227,13 @@ Name it **store candidate list** and click **V** to save.  Your flow should now 
 
 ### Step 4: For each loop to upload candidates resumes
 
-We will next create a **for-each loop** to upload each resume, extract the name of the candidate and their skills, and store all this info in the *candidates* variable. 
+We will next create a **for-each loop** to upload each resume, extract the name of the candidate and their skills, and store all this info in the *candidates* variable.
 
-Hover over the arrow connecting the code block to the end node and click on the **+** sign, then select **For each**: 
+Hover over the arrow connecting the code block to the end node and click on the **+** sign, then select **For each**:
 
 ![alt text](./hands-on-lab-assets/create_for_each.png)
+
+> **Important:** After creating the **For each 1** node, click on it and configure the iteration list. Instead of using automap, select **Flow variables -> num_candidates** as the list to iterate over. This ensures the loop runs for the correct number of candidates.
 
 ### Step 5: Display message to upload a resume
 
@@ -274,33 +274,39 @@ Click on the new *File upload** node and rename it to **Upload resume**:
 
 ### Step 7: Document extractor for resumes
 
-Next we will create a document extraction node to extract the candidate's name and skills from their resume. 
+Next we will create a document extraction node to extract the candidate's name and skills from their resume.
 
-Still inside the **For all** loop, hover over the last arrow and click on **+** to create a new **Document extractor** node: 
+Still inside the **For all** loop, hover over the last arrow and click on **+** to create a new **Document extractor** node:
 
 ![alt text](./hands-on-lab-assets/create_doc_extractor.png)
 
-Click on the **Document extractor** node and then **Edit fields**: 
+Click on the **Document extractor** node and then **Edit fields**:
 
 ![alt text](./hands-on-lab-assets/edit_doc_extractor_fields.png)
 
-We will now upload one of the resumes as a sample to train the document extractor.  Drag and drop the [Candidate2.pdf](../data/Candidate%202.pdf) file you downloaded earlier in the lab: 
+> **Important:** Before configuring the fields, you need to bind the uploaded file to this document extractor. Click on **Edit data mapping** for the Document extractor node. Instead of using automap, select the **variable icon** and choose **Upload resume -> value** to directly map the uploaded file to the document extractor input.
 
-Once the document is done uploading, you will see the following screen. Click on **Add field** to start adding fields we want to extract and train the document extractor on: 
+We will now upload one of the resumes as a sample to train the document extractor.  Drag and drop the [Candidate2.pdf](../data/Candidate%202.pdf) file you downloaded earlier in the lab:
+
+Once the document is done uploading, you will see the following screen. Click on **Add field** to start adding fields we want to extract and train the document extractor on:
 
 ![alt text](./hands-on-lab-assets/doc_extractor_show.png)
 
-Enter **Name** for the name of the field and hit Enter.  The document extractor will try to extract the name from the resume and will display it once ready: 
+Enter **Name** for the name of the field and hit Enter.  The document extractor will try to extract the name from the resume and will display it once ready:
 
 ![alt text](./hands-on-lab-assets/candidate_name.png)
 
-Next we need to add another field **Skills**. Add one more field and name it **Skills**. Once you hit Enter, the document extractor will populate the field from the document: 
+Next we need to add another field **Skills**. Add one more field and name it **Skills**. Once you hit Enter, the document extractor will populate the field from the document:
 
 ![alt text](./hands-on-lab-assets/candidate_skills.png)
 
-Rename the document extractor node to **Resume extractor** by clicking on it and editing it's name
+> **Important:** Make sure the field is named exactly **Skills** (with capital S) as it will be referenced in the code block later as `output.skills`.
 
-Your **For each** loop should now look like this: 
+Rename the document extractor node to **Resume extractor** by clicking on it and editing it's name.
+
+> **Critical:** The document extractor node MUST be named exactly **Resume extractor** as this name is referenced in the code blocks. Any other name will cause errors.
+
+Your **For each** loop should now look like this:
 
 ![alt text](./hands-on-lab-assets/for_each_after_extractor.png)
 
@@ -310,12 +316,18 @@ The last activity we need to create in the **For each** loop is another code blo
 
 ![alt text](./hands-on-lab-assets/store_candidate_info.png)
 
-Click on the code block and open the code editor. Enter the following in the code editor: 
+Click on the code block and open the code editor. Enter the following in the code editor:
 
 ```
 flow.private.candidates += "Name: " + str(flow["For each 1"]["Resume extractor"].output.name) + "\n\nSkills: " + str(flow["For each 1"]["Resume extractor"].output.skills) + "\n\n"
 ```
-Rename the code block to **Update candidates**. The **For each** should now look like this: 
+
+> **Important:** This code references the document extractor variables created in Step 7. Make sure:
+> - The document extractor is named exactly **Resume extractor**
+> - The fields are named exactly **Name** and **Skills** (matching the `.output.name` and `.output.skills` references)
+> - If you named the field differently (e.g., "Skill" instead of "Skills"), update the code to match: `output.skill` instead of `output.skills`
+
+Rename the code block to **Update candidates**. The **For each** should now look like this:
 
 ![alt text](./hands-on-lab-assets/for_each_final.png)
 
@@ -361,13 +373,17 @@ Upload job description
 
 ### Step 11: Document extractor for job skills
 
-Next we will create another document extractor node to extract required and preferred skills from the job description. 
+Next we will create another document extractor node to extract required and preferred skills from the job description.
 
-Add a **Document extractor** node before the end of the flow and rename it as **Extract job skills**: 
+Add a **Document extractor** node before the end of the flow and rename it as **Extract job skills**:
 
 ![alt text](./hands-on-lab-assets/extract_job_skills.png)
 
-Edit the fields of this document extractor node and drag and drop [the job description file](../data/Job%20Description.pdf) that you downloaded earlier: 
+> **Critical:** The document extractor node MUST be named exactly **Extract job skills** as this name is referenced in the generative prompt data mapping. Any other name will cause errors.
+
+> **Important:** Before configuring the fields, click on **Edit data mapping** for this Document extractor node. Instead of using automap, select the **variable icon** and choose **Upload job description -> value** to directly map the uploaded file to the document extractor input.
+
+Edit the fields of this document extractor node and drag and drop [the job description file](../data/Job%20Description.pdf) that you downloaded earlier:
 
 ![alt text](./hands-on-lab-assets/job_file_drag_drop.png)
 

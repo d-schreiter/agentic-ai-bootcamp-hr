@@ -148,6 +148,14 @@ In a real enterprise scenario it is recommended to start with pre-built domain a
 
 ### Test HR Agent in Preview
 
+Test the Agent from the AI Chat window. Click on the hamburger menu in the top left corner and then click on **Chat**:
+
+<img width="1000" alt="image" src="hands-on-lab-assets/step_16_v2.png">
+
+Make sure **HR Agent** is selected. You can now test your agent:
+
+<img width="1000" alt="image" src="hands-on-lab-assets/hr_step16.png">
+
 For this next part, first select an employee name from the list provided by your instructor and use it for your entire session.
 
 Test your agent in the preview chat on the right side by asking the following questions and validating the responses.  They should look similar to what is shown in the screenshots below:
@@ -192,15 +200,6 @@ Show my profile data.
 ```
 <img width="1000" alt="image" src="hands-on-lab-assets/show_profile_after.png">
 
-#### Test HR Agent AI Chat
-
-Test the Agent from the AI Chat window. Click on the hamburger menu in the top left corner and then click on **Chat**:
-
-<img width="1000" alt="image" src="hands-on-lab-assets/step_16_v2.png">
-
-Make sure **HR Agent** is selected. You can now test your agent:
-
-<img width="1000" alt="image" src="hands-on-lab-assets/hr_step16.png">
 
 ### Review Domain Agents and Tools (optional)
 
@@ -229,68 +228,3 @@ Make sure **HR Agent** is selected. You can now test your agent:
 Note that it includes functionality similar to what we already implemented in our custom askHR agent.  This is outside the scope of our lab, but in a real enterprise scenario you would start from one of the pre-built domain agent templates and use it as a starting template. 
 
 7. Go back to the Employee Support Manager Agent.  We will not use this today to avoid many multiple copies of the same agent, but notice that each pre-built agent includes the **Use as template** button in the top right corner - this is what allows you to create your own instance of the agent.  Instead of creating a new instance, we will open an existing one that was created by the instructor before the bootcamp. 
-
-### Test the SAP Employee Support Manager Agent (optional)
-
-In our case, we have already created an SAP employee support manager agent from an existing domain agent template (see the last step for more details).  We will now review this agent.
-
-1. Open the Agent Builder -- in the main hamburger menu select **Build**->**Agent Builder**: 
-
-![alt text](./hands-on-lab-assets/agent_builder.png)
-
-2. Search for the **Employee Support Manager** and open it:
-
-![alt text](./hands-on-lab-assets/agent_builder_sap.png)
-
-3. Review the agent description (very simple), confirm that the 11 collaborator agents are listed in the **Agents** section, and review the description which contains a concise summary of when to route to each collaborator agent: 
-
-![alt text](./hands-on-lab-assets/review_agent.png)
-
-**Note that this agent has already been deployed and can now be used directly from Orchestrate Chat. This is what we will do next:**
-
-4. Open Orchestrate **Chat** from the main hamburger menu -> Chat: 
-
-![alt text](./hands-on-lab-assets/chat.jpg)
-
-5. Select **Employee Support Manager** in the agent dropdown: 
-
-![alt text](./hands-on-lab-assets/chat_select_emp_support.jpg)
-
-6. Test the agent by entering the following query in chat: 
-
-```
-Show me payslips for jadannb@test.com for 2018-01-01 to 2018-01-31
-```
-
-![alt text](./hands-on-lab-assets/show_payslips.png)
-
-As you can see the agent returns payslip info for the pay period requested. 
-
-7. Let's see how the agent arrived at this answer and what other agents and tools it had to invoke in the process.  Toggle **Show Reasoning** next to the agent name in the chat output and expand all the steps: 
-
-![alt text](./hands-on-lab-assets/show_reasoning.png)
-
-You should now see which agents and tools were invoked in the process: 
-
-![alt text](./hands-on-lab-assets/expand_steps.png)
-
-As you can see, we first got transferred to **Compensation agent**.  Then **get_user_id_in_sap_success_factors** tool was called to obtain the ID of the user from their email.  Finally, the **get_payslip_details_in_sap_success_factors** was called to obtain payslip info given the user ID. 
-
-8. You can ask some follow-up questions, for example ask the agent to display the info as a table for easier reading: 
-
-```
-show me this in a table
-```
-
-![alt text](./hands-on-lab-assets/table_format.png)
-
-Or ask for additional payslip info for another period: 
-
-```
-what about the last month of that year
-```
-
-![alt text](./hands-on-lab-assets/last_month_of_year.png)
-
-Once again, select **Show reasoning** to see more details and expand the steps to see which tools were called as well as inputs and outputs of each tool.
-
