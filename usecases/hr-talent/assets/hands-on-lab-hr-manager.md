@@ -52,6 +52,8 @@ This agent helps figure out whether a set of candidates match the skills given i
 <br>
 <br>
 
+> **Important:** You should also add the agent description to the **Behavior** section. Scroll down to the **Behavior** section and add the same description there to help guide the agent's responses and routing logic.
+
 4. Scroll down and enable the **Chat with Documents** toggle:
 
 <img width="713" alt="chat-with-documents" src="hands-on-lab-assets/ca258ba3-149b-462f-a28c-8e3574707fbf.png">
@@ -200,6 +202,8 @@ This agent reviews HR cases from employee complaints of potential business condu
 <img width="723" alt="Screenshot 2025-09-25 at 10 59 02 AM" src="hands-on-lab-assets/6a49ad39-b869-4846-be4a-43216386fdd7.png">
 <br>
 <br>
+
+> **Important:** Remember to also add this description to the **Behavior** section of the agent to ensure proper routing and response handling.
 
 2. Add knowledge to it. Scroll down for the **Knowledge** section and click on **Choose Knowledge**
 

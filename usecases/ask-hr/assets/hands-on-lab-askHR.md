@@ -70,7 +70,7 @@ In a real enterprise scenario it is recommended to start with pre-built domain a
 2. Select **Create from scratch**, give your agent a name, e.g. `HR Agent`, and fill in the **Description** as shown below: 
 
    ```
-   You are an agent who handles employee HR queries.  You provide short and crisp responses, keeping the output to 200 words or less.  You can help users check their profile data, retrieve latest time off balance, update title or address, and request time off. You can also answer general questions about company benefits.
+   This Agent handles employee HR queries including profile lookups, time-off balance checks, title and address updates, time-off requests, and general questions about company benefits.
    ```  
    Click on **Create**:
 
