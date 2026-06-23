@@ -10,8 +10,6 @@
   - [Create HR Agent](#create-hr-agent)
   - [Test HR Agent in preview](#test-hr-agent-in-preview)
   - [Test HR Agent in AI Chat](#test-hr-agent-ai-chat)
-  - [Review Domain Agents and Tools](#review-domain-agents-and-tools-optional) (Optional)
-  - [Test the SAP Employee Support Manager agent](#test-the-sap-employee-support-manager-agent-optional)(Optional)
 
 ## Use Case Description
 
@@ -199,32 +197,3 @@ Request time off
 Show my profile data.
 ```
 <img width="1000" alt="image" src="hands-on-lab-assets/show_profile_after.png">
-
-
-### Review Domain Agents and Tools (optional)
-
-1. Log into the shared watsonx Orchestrate tenant (URL provided by your instructor).
-
-2. Click on **Discover** in the main hamburger menu to go to the Catalog of agents and tools: 
-
-![](./hands-on-lab-assets/discover.png)
-
-3. Here you will find a list of many pre-built agents and tools that you can filter by category (e.g. Finance, HR, IT), app (e.g. Coupa, Box, Google, etc.):
-
-![catalog](./hands-on-lab-assets/catalog.png)
-
-4. Take a look around, then search for the **SAP Employee Support Manager** agent and select it from the list: 
-
-![search_for_sap](./hands-on-lab-assets/search_for_sap.png)
-
-5. Notice that the supervisory agent **Employee Support Manager** includes 11 collaborator agents:
-
-![employee_support_sap](./hands-on-lab-assets/employee_support_sap.png)
-
-6. Click on one of them and take a look at the tools included, e.g. the **Leave Management** agent:
-
-![alt text](./hands-on-lab-assets/leave_management_agent.png)
-
-Note that it includes functionality similar to what we already implemented in our custom askHR agent.  This is outside the scope of our lab, but in a real enterprise scenario you would start from one of the pre-built domain agent templates and use it as a starting template. 
-
-7. Go back to the Employee Support Manager Agent.  We will not use this today to avoid many multiple copies of the same agent, but notice that each pre-built agent includes the **Use as template** button in the top right corner - this is what allows you to create your own instance of the agent.  Instead of creating a new instance, we will open an existing one that was created by the instructor before the bootcamp. 
